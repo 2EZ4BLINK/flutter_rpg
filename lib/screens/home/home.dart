@@ -21,6 +21,8 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             const Text("Character list"),
+            Text("Character list", style: Theme.of(context).textTheme.headlineMedium),
+            Text("Character list", style: Theme.of(context).textTheme.titleMedium),
             
             FilledButton(
                 onPressed: () => {},
