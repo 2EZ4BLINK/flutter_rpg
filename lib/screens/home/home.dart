@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Characters"),
+        title: const StyledTitle("Characters"),
         centerTitle: true,
       ),
       body: Container(
@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
             const StyledText("Character list"),
             const StyledHeading("Character list"),
             const StyledTitle("Character list"),
-            
+
             FilledButton(
                 onPressed: () => {},
                 child: const Text("Create new")
