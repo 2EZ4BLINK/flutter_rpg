@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List characters = ['mario', 'luigi', 'peach', 'toad', 'bowser', 'koopa'];
+  List<String> characters = ['mario', 'luigi', 'peach', 'toad', 'bowser', 'koopa'];
 
   @override
   Widget build(BuildContext context) {
