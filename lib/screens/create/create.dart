@@ -24,6 +24,14 @@ class _CreateState extends State<Create> {
     super.dispose();
   }
 
+  Vocation selectedVocation = Vocation.junkie;
+
+  void updateVocation(Vocation vocation) {
+    setState(() {
+      selectedVocation = vocation;
+    });
+  }
+
   void handleSubmit() {
     if(_nameController.text.trim().isEmpty){
       print('name should not be empty');
@@ -105,17 +113,25 @@ class _CreateState extends State<Create> {
               const SizedBox(height: 30,),
           
               //Vocation cards
-              const VocationCard(
-                  vocation: Vocation.junkie
+              VocationCard(
+                  onClick: updateVocation,
+                  vocation: Vocation.junkie,
+                  selected: selectedVocation == Vocation.junkie,
               ),
-              const VocationCard(
-                  vocation: Vocation.ninja
+              VocationCard(
+                  onClick: updateVocation,
+                  vocation: Vocation.ninja,
+                  selected: selectedVocation == Vocation.ninja,
               ),
-              const VocationCard(
-                  vocation: Vocation.raider
+              VocationCard(
+                  onClick: updateVocation,
+                  vocation: Vocation.raider,
+                  selected: selectedVocation == Vocation.raider,
               ),
-              const VocationCard(
-                  vocation: Vocation.wizard
+              VocationCard(
+                  onClick: updateVocation,
+                  vocation: Vocation.wizard,
+                  selected: selectedVocation == Vocation.wizard,
               ),
           
               // Button

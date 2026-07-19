@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
+import 'package:flutter_rpg/theme.dart';
 
 class VocationCard extends StatelessWidget {
   const VocationCard({
     super.key,
-    required this.vocation
+    required this.vocation,
+    required this.onClick,
+    required this.selected,
   });
 
   final Vocation vocation;
+  final bool selected;
+  final void Function(Vocation) onClick;
 
   void handleTap() {
-    print(vocation.title);
+    onClick(vocation);
   }
 
   @override
@@ -19,13 +24,15 @@ class VocationCard extends StatelessWidget {
     return GestureDetector(
       onTap: handleTap,
       child: Card(
+        color: selected ? AppColors.secondaryColor : Colors.transparent,
         child: Padding(
             padding: const EdgeInsets.all(8),
           child: Row(
             children: [
               Image.asset('assets/img/vocations/${vocation.image}',
                 width: 80,
-                colorBlendMode: BlendMode.color
+                colorBlendMode: BlendMode.color,
+                color: !selected ? Colors.black.withValues(alpha: 0.8) : Colors.transparent,
               ),
       
               SizedBox(width: 10),
