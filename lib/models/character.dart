@@ -28,5 +28,4 @@ class Character with Stats{
     skills.clear();
     skills.add(skill);
   }
-
 }

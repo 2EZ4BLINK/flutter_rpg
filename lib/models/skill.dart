@@ -12,8 +12,6 @@ class Skill {
     required this.image,
     required this.vocation,
   });
-
-  var age = 5;
 }
 
 final List<Skill> allSkills = [
