@@ -21,7 +21,7 @@ mixin Stats {
     {'title': 'skill', "value": _skill.toString()},
   ];
 
-  void increaseStats(String stat) {
+  void increaseStat(String stat) {
     if(_points > 0){
       if(stat == 'health'){
         _health++;
@@ -35,10 +35,11 @@ mixin Stats {
       if(stat == 'skill'){
         _skill++;
       }
+        _points--;
     }
   }
 
-  void decreaseStats(String stat) {
+  void decreaseStat(String stat) {
       if(stat == 'health' && _health > 5){
           _health--;
           _points++;
