@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/create/vocation_card.dart';
+import 'package:flutter_rpg/screens/home/home.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uuid/uuid.dart';
+
+var uuid = const Uuid();
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -34,15 +39,57 @@ class _CreateState extends State<Create> {
 
   void handleSubmit() {
     if(_nameController.text.trim().isEmpty){
-      print('name should not be empty');
+      showDialog(
+          context: context,
+          builder: (ctx) {
+            return AlertDialog(
+              title: const StyledHeading("Missing Character Name"),
+              content: const StyledText("Every good RPG character need a great name"),
+              actionsAlignment: MainAxisAlignment.center,
+              actions: [
+                StyledButton(
+                    onPressed: (){
+                      Navigator.pop(ctx);
+                    },
+                    child: StyledHeading("Close")
+                )
+              ],
+            );
+          }
+      );
       return;
     }
     if(_sloganController.text.trim().isEmpty){
-      print('slogan should not be empty');
+      showDialog(
+          context: context,
+          builder: (ctx) {
+            return AlertDialog(
+              title: const StyledHeading("Missing Character Slogan"),
+              content: const StyledText("Remember to add a catchy slogan"),
+              actionsAlignment: MainAxisAlignment.center,
+              actions: [
+                StyledButton(
+                    onPressed: (){
+                      Navigator.pop(ctx);
+                    },
+                    child: StyledHeading("Close")
+                )
+              ],
+            );
+          }
+      );
       return;
     }
-    print(_nameController.text);
-    print(_sloganController.text);
+    characters.add(Character(
+      name: _nameController.text.trim(),
+      slogan: _sloganController.text.trim(),
+      vocation: selectedVocation,
+      id: uuid.v4()
+    ));
+
+    Navigator.push(context, MaterialPageRoute(
+      builder: (ctx) => Home(),
+    ));
   }
 
   @override
@@ -133,7 +180,22 @@ class _CreateState extends State<Create> {
                   vocation: Vocation.wizard,
                   selected: selectedVocation == Vocation.wizard,
               ),
-          
+
+
+              Center(
+                child: Icon(
+                    Icons.code,
+                    color: AppColors.primaryColor
+                ),
+              ),
+              const Center(
+                child: StyledHeading("Good luck."),
+              ),
+              const Center(
+                child: StyledText("And enjoy the journey."),
+              ),
+              const SizedBox(height: 30,),
+
               // Button
               Center(
                 child: StyledButton(

@@ -5,7 +5,7 @@ import 'package:flutter_rpg/screens/home/home.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Create(),
+    home: Home(),
     theme: primaryTheme,
   ));
 }
